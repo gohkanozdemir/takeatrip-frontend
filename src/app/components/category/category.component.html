@@ -1,1 +1,18 @@
-<p>category works!</p>
+<!-- <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdowncartype" data-bs-toggle="dropdown" aria-expanded="true">
+      Dropdown button
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdowncartype">
+      <li *ngFor="let category of categories"><a class="dropdown-item">{{ category.categoryName }}</a></li>
+    </ul>
+  </div> -->
+
+  <ul class="list-group">
+      <li [class]="getAllCategoryClass()" routerLink="/cars">
+        <input class="form-check-input me-1" type="checkbox">All Category</li>
+    <li (click)="setCurrentCategory(category)" routerLink="/cars/category/{{category.id}}"
+    *ngFor="let category of categories" [class]="getCurrentCategoryClass(category)">
+      <input class="form-check-input me-1" type="checkbox">
+      {{ category.categoryName }}
+    </li>
+  </ul>

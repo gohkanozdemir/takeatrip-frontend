@@ -1,7 +1,7 @@
 export interface Category {
-  Id: number;
-  CategoryName: string;
-  Doors: number;
-  Seats: number;
-  Description: string;
+  id: number;
+  categoryName: string;
+  doors: number;
+  seats: number;
+  description: string;
 }
