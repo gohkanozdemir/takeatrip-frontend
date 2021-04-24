@@ -8,7 +8,7 @@ import { Category } from '../models/category';
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = 'https://localhost:44383/api/carcategories';
+  private apiUrl = 'https://localhost:44383/api/categories';
   constructor(private httpClient: HttpClient) { }
 
   getCategories(): Observable<ListResponseModel<Category>>{

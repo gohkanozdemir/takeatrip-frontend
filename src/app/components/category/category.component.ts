@@ -10,6 +10,8 @@ import { Category } from 'src/app/models/category';
 export class CategoryComponent implements OnInit {
   categories: Category[] = [];
   currentCategory: Category;
+  isChecked: boolean;
+  
 
   constructor(private categoryService: CategoryService) {}
 
@@ -23,7 +25,17 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  setCurrentCategory(category: Category) {this.currentCategory = category }
+  setCurrentCategory(category: Category) {
+    this.currentCategory = category 
+  }
+
+  onCheckboxChange(event: any, category: Category){
+    if (event.target.checked) {
+      console.log("checked" + category.id)
+    } else {
+      console.log("unchecked"+ category.id)
+    }
+  }
 
   getCurrentCategoryClass(category: Category){
     if(category == this.currentCategory){

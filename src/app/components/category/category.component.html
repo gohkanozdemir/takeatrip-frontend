@@ -7,12 +7,18 @@
     </ul>
   </div> -->
 
-  <ul class="list-group">
-      <li [class]="getAllCategoryClass()" routerLink="/cars">
-        <input class="form-check-input me-1" type="checkbox">All Category</li>
-    <li (click)="setCurrentCategory(category)" routerLink="/cars/category/{{category.id}}"
-    *ngFor="let category of categories" [class]="getCurrentCategoryClass(category)">
-      <input class="form-check-input me-1" type="checkbox">
-      {{ category.categoryName }}
-    </li>
-  </ul>
+<ul class="list-group">
+  <li [class]="getAllCategoryClass()" routerLink="/cars">
+    <input class="form-check-input me-1" type="checkbox" />All Category
+  </li>
+  <li
+    (click)="setCurrentCategory(category)"
+    routerLink="/cars/category/{{ category.id }}"
+    *ngFor="let category of categories"
+    [class]="getCurrentCategoryClass(category)"
+    id="{{ category.categoryName }}"
+  >
+    <input class="form-check-input me-1" type="checkbox" id="{{ category.categoryName }}" (change)="onCheckboxChange($event,category)"/>
+    {{ category.categoryName }}
+  </li>
+</ul>
