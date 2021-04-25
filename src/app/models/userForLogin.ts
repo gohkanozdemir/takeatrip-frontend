@@ -1,4 +1,4 @@
 export interface UserForLogin {
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
 }

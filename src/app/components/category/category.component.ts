@@ -10,7 +10,7 @@ import { Category } from 'src/app/models/category';
 export class CategoryComponent implements OnInit {
   categories: Category[] = [];
   currentCategory: Category;
-  isChecked: boolean;
+  checked: string= "";
   
 
   constructor(private categoryService: CategoryService) {}
@@ -31,18 +31,18 @@ export class CategoryComponent implements OnInit {
 
   onCheckboxChange(event: any, category: Category){
     if (event.target.checked) {
-      console.log("checked" + category.id)
+      this.checked = "active";
     } else {
-      console.log("unchecked"+ category.id)
+      this.checked = "";
     }
   }
 
   getCurrentCategoryClass(category: Category){
     if(category == this.currentCategory){
-      return "list-group-item active"
+      return "list-group-item list-group-item-action list-group-item-primary"
     }
     else{
-      return "list-group-item"
+      return "list-group-item list-group-item-action list-group-item-light"
     }
   }
 

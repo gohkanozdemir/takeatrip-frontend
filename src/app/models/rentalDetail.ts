@@ -1,4 +1,4 @@
 export interface RentalDetail {
-  CarName: string;
-  CustomerName: string;
+  carName: string;
+  customerName: string;
 }

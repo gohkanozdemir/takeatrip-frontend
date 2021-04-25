@@ -24,9 +24,14 @@ export class CarComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if (params['id']) {
-        this.getCarsByCategory(params['id']);
-      } else {
+      if (params['categoryId']) {
+        this.getCarsByCategory(params['categoryId']);
+      } else if(params['colorId']) {
+          this.getCarsDetailsByColorId(params['colorId']);
+      } else if(params['brandId']) {
+        this.getCarsDetailsByBrandId(params['brandId']);
+    }       
+      else {
         this.getCars();
       }
     });
@@ -60,10 +65,24 @@ export class CarComponent implements OnInit {
     });
   }
 
-  getCarsDetailsByCategoryId(id: number) {
-    this.carService.getCarsDetailsByCategoryId(id).subscribe((response) => {
+  getCarsDetailsByCategoryId(categoryId: number) {
+    this.carService.getCarsDetailsByCategoryId(categoryId).subscribe((response) => {
       this.carDetails = response.data;
       this.mergeForDetails();
+    });
+  }
+
+  getCarsDetailsByColorId(colorId: number) {
+    this.carService.getCarsDetailsByColorId(colorId).subscribe((response) => {
+      this.carWithDetails = response.data;
+      this.dataLoaded = true;
+    });
+  }
+
+  getCarsDetailsByBrandId(brandId: number) {
+    this.carService.getCarsDetailsByBrandId(brandId).subscribe((response) => {
+      this.carWithDetails = response.data;
+      this.dataLoaded = true;
     });
   }
 

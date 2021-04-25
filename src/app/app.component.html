@@ -1,14 +1,21 @@
-
 <div class="container">
   <app-navi></app-navi>
   <div class="row">
-    <div class="col-md-3">
-      <app-category></app-category>
+    <div class="col-md-3" id="filters">
+      <div class="accordion" id="filterAccordion">
+        <div>
+          <app-category></app-category>
+        </div>
+        <div>
+          <app-brand></app-brand>
+        </div>
+        <div>
+          <app-color></app-color>
+        </div>
+      </div>
     </div>
     <div class="col-md-9">
       <router-outlet></router-outlet>
-    </div>     
+    </div>
   </div>
 </div>
-
-

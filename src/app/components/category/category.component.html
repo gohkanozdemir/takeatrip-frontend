@@ -1,24 +1,43 @@
-<!-- <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdowncartype" data-bs-toggle="dropdown" aria-expanded="true">
-      Dropdown button
+<div class="accordion-item">
+  <h2 class="accordion-header" id="headingCategory">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseCategory"
+      aria-expanded="false"
+      aria-controls="collapseCategory"
+    >
+      Categories
     </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdowncartype">
-      <li *ngFor="let category of categories"><a class="dropdown-item">{{ category.categoryName }}</a></li>
-    </ul>
-  </div> -->
-
-<ul class="list-group">
-  <li [class]="getAllCategoryClass()" routerLink="/cars">
-    <input class="form-check-input me-1" type="checkbox" />All Category
-  </li>
-  <li
-    (click)="setCurrentCategory(category)"
-    routerLink="/cars/category/{{ category.id }}"
-    *ngFor="let category of categories"
-    [class]="getCurrentCategoryClass(category)"
-    id="{{ category.categoryName }}"
+  </h2>
+  <div
+    id="collapseCategory"
+    class="accordion-collapse collapse"
+    aria-labelledby="headingCategory"
+    data-bs-parent="#filterAccordion"
   >
-    <input class="form-check-input me-1" type="checkbox" id="{{ category.categoryName }}" (change)="onCheckboxChange($event,category)"/>
-    {{ category.categoryName }}
-  </li>
-</ul>
+    <div class="accordion-body">
+      <ul class="list-group">
+        <li [class]="getAllCategoryClass()" routerLink="/cars">
+          <input class="form-check-input me-1" type="checkbox" />All Category
+        </li>
+        <li
+          (click)="setCurrentCategory(category)"
+          routerLink="/cars/category/{{ category.id }}"
+          *ngFor="let category of categories"
+          [class]="getCurrentCategoryClass(category)"
+          id="{{ category.categoryName }}"
+        >
+          <input
+            class="form-check-input me-1"
+            type="checkbox"
+            id="{{ category.categoryName }}"
+            (change)="onCheckboxChange($event, category)"
+          />
+          {{ category.categoryName }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
