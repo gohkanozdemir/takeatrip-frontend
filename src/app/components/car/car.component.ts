@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
-import { CarDetail } from 'src/app/models/carDetail';
 import { CarWithDetails } from 'src/app/models/carWithDetails';
 import { CarService } from 'src/app/services/car.service';
 
@@ -12,10 +11,11 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
-  carDetails: CarDetail[] = [];
   filterCar = '';
-  carWithDetails: CarWithDetails[];
+  carsWithDetails: CarWithDetails[];
+  carWithDetails: CarWithDetails;
   dataLoaded = false;
+  currentCar:Car;
 
   constructor(
     private carService: CarService,
@@ -36,11 +36,23 @@ export class CarComponent implements OnInit {
       }
     });
   }
+  getCarClass(car:Car){
+
+    if(car == this.currentCar){
+      return "table-info cursorPointer"
+    }else{
+      return "cursorPointer"
+    }
+  }
+
+  setCurrentCar(car:Car){
+    this.currentCar=car;
+  }
 
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
-      //console.log("getCars" +JSON.stringify(response.data) )
+      console.log("getCars" +JSON.stringify(response.data) )
       this.getCarsDetails();
     });
   }
@@ -54,34 +66,35 @@ export class CarComponent implements OnInit {
 
   getCarDetailsBydId(id: number) {
     this.carService.getCarDetailsById(id).subscribe((response) => {
-      this.carDetails = response.data;
+      this.carWithDetails = response.data;
     });
   }
 
   getCarsDetails() {
     this.carService.getCarsDetails().subscribe((response) => {
-      this.carDetails = response.data;
+      this.carsWithDetails = response.data;
+      console.log("getCarsDetails" +JSON.stringify(response.data) )
       this.mergeForDetails();
     });
   }
 
   getCarsDetailsByCategoryId(categoryId: number) {
     this.carService.getCarsDetailsByCategoryId(categoryId).subscribe((response) => {
-      this.carDetails = response.data;
+      this.carsWithDetails = response.data;
       this.mergeForDetails();
     });
   }
 
   getCarsDetailsByColorId(colorId: number) {
     this.carService.getCarsDetailsByColorId(colorId).subscribe((response) => {
-      this.carWithDetails = response.data;
+      this.carsWithDetails = response.data;
       this.dataLoaded = true;
     });
   }
 
   getCarsDetailsByBrandId(brandId: number) {
     this.carService.getCarsDetailsByBrandId(brandId).subscribe((response) => {
-      this.carWithDetails = response.data;
+      this.carsWithDetails = response.data;
       this.dataLoaded = true;
     });
   }
@@ -89,12 +102,12 @@ export class CarComponent implements OnInit {
       // If the arrays are always ordered (code to code), you can directly zip them
       // https://stackoverflow.com/questions/52055384/merge-two-arrays-into-one-in-typescript
   private mergeForDetails(){
-    this.carWithDetails = this.cars.map((car, index) => ({
+    this.carsWithDetails = this.cars.map((car, index) => ({
       id: car.id,
-      carName: this.carDetails[index].carName,
-      brandName: this.carDetails[index].brandName,
-      colorName: this.carDetails[index].colorName,
-      categoryName: this.carDetails[index].categoryName,
+      carName: car.carName,
+      brandName: this.carsWithDetails[index].brandName,
+      colorName: this.carsWithDetails[index].colorName,
+      categoryName: this.carsWithDetails[index].categoryName,
       modelYear: car.modelYear,
       dailyPrice: car.dailyPrice,
       description: car.description,

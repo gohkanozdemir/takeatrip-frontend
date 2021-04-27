@@ -16,7 +16,11 @@ import { CarimageComponent } from './components/carimage/carimage.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
-import {ToastrModule } from "ngx-toastr"
+import {ToastrModule } from "ngx-toastr";
+import { CardetailswithimagesComponent } from './components/cardetailswithimages/cardetailswithimages.component';
+import { VatAddedPipe } from './pipes/vat-added.pipe';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { MarkAsteriskDirective } from './directives/mark-asterisk.directive'
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import {ToastrModule } from "ngx-toastr"
     CustomerComponent,
     CarimageComponent,
     RentalComponent,
-    FilterPipePipe
+    FilterPipePipe,
+    CardetailswithimagesComponent,
+    VatAddedPipe,
+    CarAddComponent,
+    MarkAsteriskDirective
   ],
   imports: [
     HttpClientModule,

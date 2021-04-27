@@ -1,0 +1,110 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Araba ekle</h5></div>
+      <div class="card-body">
+        <form [formGroup]="carAddForm">
+          <div class="mb-3">
+            <label for="category"> Category <span class="required-asterisk">*</span> </label>
+            <select
+              id="category"
+              class="form-select"
+              formControlName="categoryId"
+              aria-label="Default select example"
+            >
+              <option selected disabled [ngValue]="null" >Select Category </option>
+              <option *ngFor="let category of categories" [ngValue]="category.id">
+                {{ category.categoryName }}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="brand"> Brand <span class="required-asterisk">*</span> </label>
+            <select
+              id="brand"
+              class="form-select"
+              formControlName="brandId"
+              aria-label="Default select example"
+            >
+              <option selected disabled [ngValue]="null">Select Brand </option>
+              <option *ngFor="let brand of brands" [ngValue]="brand.id">
+                {{ brand.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="color"> Color <span class="required-asterisk">*</span></label>
+            <select
+              id="color"
+              class="form-select"
+              formControlName="colorId"
+              aria-label="Default select example"
+            >
+              <option selected disabled [ngValue]="null" >Select Color </option>
+              <option *ngFor="let color of colors" [ngValue]="color.id">
+                {{ color.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="modelYear">Model Year <span class="required-asterisk">*</span> </label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="modelYear"
+                formControlName="modelYear"
+                class="form-control"
+                placeholder="Model Year"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="dailyPrice">Daily Price <span class="required-asterisk">*</span> </label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="dailyPrice"
+                formControlName="dailyPrice"
+                class="form-control"
+                placeholder="Daily Price"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description">Car Description <span class="required-asterisk">*</span></label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="description"
+                formControlName="description"
+                class="form-control"
+                placeholder="Car Description"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description">Car Model <span class="required-asterisk">*</span> </label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="carName"
+                formControlName="carName"
+                class="form-control"
+                placeholder="Car Model"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" [disabled]="!carAddForm.valid" (click)="add()">Add Car</button>
+      </div>
+    </div>
+  </div>
+</div>
