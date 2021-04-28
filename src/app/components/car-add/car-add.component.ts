@@ -80,14 +80,11 @@ export class CarAddComponent implements OnInit {
             this.toastrService.success(response.message, 'Başarılı');
             this.imageList.forEach((file) => {
               const reader = new FileReader();
-              //reader.readAsDataURL(file);
-              //reader.addEventListener("load", (event: any) =>{
                 this.carImageService.addImage(file,response.data.id).subscribe((res) =>{
                   this.toastrService.success(res.message, 'Resim yukleme Başarılı');
                 }, (resError)=> {
                   this.toastrService.error(resError.message, 'Resim yukleme Başarısiz');
                 })
-              //})
             });
           }
         },

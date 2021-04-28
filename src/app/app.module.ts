@@ -24,7 +24,18 @@ import { MarkAsteriskDirective } from './directives/mark-asterisk.directive';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FileUploadDirective } from './directives/file-upload.directive';
 import { CarimageAddComponent } from './components/carimage-add/carimage-add.component';
-import { ProgressComponent } from './components/progress/progress.component'
+import { ProgressComponent } from './components/progress/progress.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
+import { CategoryUpdateComponent } from './components/category-update/category-update.component';
+import { CategoryDeleteComponent } from './components/category-delete/category-delete.component'
 
 @NgModule({
   declarations: [
@@ -45,7 +56,18 @@ import { ProgressComponent } from './components/progress/progress.component'
     HomepageComponent,
     FileUploadDirective,
     CarimageAddComponent,
-    ProgressComponent
+    ProgressComponent,
+    CarUpdateComponent,
+    CarDeleteComponent,
+    ColorAddComponent,
+    ColorUpdateComponent,
+    ColorDeleteComponent,
+    BrandAddComponent,
+    BrandUpdateComponent,
+    BrandDeleteComponent,
+    CategoryAddComponent,
+    CategoryUpdateComponent,
+    CategoryDeleteComponent
   ],
   imports: [
     HttpClientModule,

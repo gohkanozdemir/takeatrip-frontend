@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarComponent } from './components/car/car.component';
 import { CardetailswithimagesComponent } from './components/cardetailswithimages/cardetailswithimages.component';
 import { CarimageAddComponent } from './components/carimage-add/carimage-add.component';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [
@@ -17,6 +20,9 @@ const routes: Routes = [
   { path: 'cars/details/:carId', component: CardetailswithimagesComponent },
   { path: 'cars/add', component: CarAddComponent },
   { path: 'image/add', component: CarimageAddComponent },
+  { path: 'colors/add', component: ColorAddComponent },
+  { path: 'brands/add', component: BrandAddComponent },
+  { path: 'categories/add', component: CategoryAddComponent },
 ];
 
 @NgModule({

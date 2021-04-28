@@ -1,0 +1,26 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Add New Category</h5></div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <form [formGroup]="categoryAddForm">
+                    <label for="categoryName"> Category <span class="required-asterisk">*</span> </label>
+                    <div class="form-group">
+                        <input
+                          type="text"
+                          id="categoryName"
+                          formControlName="categoryName"
+                          class="form-control"
+                          placeholder="Category Name"
+                        />
+                    </div>
+                </form>
+                </div>                
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" [disabled]="!categoryAddForm.valid" (click)="add()">Add Category</button>
+              </div>
+        </div>
+    </div>
+</div>
