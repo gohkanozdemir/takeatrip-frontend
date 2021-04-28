@@ -1,20 +1,10 @@
 <div class="container">
-  <app-navi></app-navi>
-  <div class="row">
-    <div class="col-md-3" id="filters">
-      <div class="accordion" id="filterAccordion">
-        <div>
-          <app-category></app-category>
-        </div>
-        <div>
-          <app-brand></app-brand>
-        </div>
-        <div>
-          <app-color></app-color>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-9">
+  <div class="col-md-12">
+    <app-navi></app-navi>
+  </div>
+
+  <div class="col-md-12 ms-2">
+    <div class="body">
       <router-outlet></router-outlet>
     </div>
   </div>

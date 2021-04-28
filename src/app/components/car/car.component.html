@@ -1,50 +1,73 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-primary"
-  role="status"
->
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div class="mb-3">
-  <label for="filterCar" class="form-label">Search Car</label>
-  <input
-    type="text"
-    [(ngModel)]="filterCar"
-    class="form-control"
-    id="filterCar"
-    placeholder="Search"
-  />
-</div>
-<table *ngIf="cars" class="table m-4">
-  <thead>
-    <tr>
-      <th>Car Name</th>
-      <th>Brand Name</th>
-      <th>Color</th>
-      <th>Category</th>
-      <th>ModelYear</th>
-      <th>DailyPrice</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let car of carsWithDetails | filterPipe: filterCar"
-      (click)="setCurrentCar(car)"
-      [class]="getCarClass(car)"
+<div class="row">
+  <div class="col-md-3" id="filters">
+    <div class="sticky-top sidebar m-2">
+      <div class="accordion" id="filterAccordion">
+        <div>
+          <app-category></app-category>
+        </div>
+        <div>
+          <app-brand></app-brand>
+        </div>
+        <div>
+          <app-color></app-color>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 ms-2">
+    <div
+      *ngIf="dataLoaded == false"
+      class="spinner-border text-primary"
+      role="status"
     >
-      <td>{{ car.carName }}</td>
-      <td>{{ car.brandName }}</td>
-      <td>{{ car.colorName }}</td>
-      <td>{{ car.categoryName }}</td>
-      <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice }} ₺</td>
-      <td>{{ car.description }}</td>
-      <td>
-        <button type="button" class="btn btn-success" routerLink="/cars/details/{{ car.id }}">
-          Araba detaylarını gör
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="mb-3">
+      <label for="filterCar" class="form-label">Search Car Model</label>
+      <input
+        type="text"
+        [(ngModel)]="filterCar"
+        class="form-control"
+        id="filterCar"
+        placeholder="Search"
+      />
+    </div>
+    <table *ngIf="cars" class="table m-4">
+      <thead>
+        <tr>
+          <th>Car Model</th>
+          <th>Brand</th>
+          <th>Color</th>
+          <th>Category</th>
+          <th>ModelYear</th>
+          <th>DailyPrice</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let car of carsWithDetails | filterPipe: filterCar"
+          (click)="setCurrentCar(car)"
+          [class]="getCarClass(car)"
+        >
+          <td>{{ car.carName }}</td>
+          <td>{{ car.brandName }}</td>
+          <td>{{ car.colorName }}</td>
+          <td>{{ car.categoryName }}</td>
+          <td>{{ car.modelYear }}</td>
+          <td>{{ car.dailyPrice }} ₺</td>
+          <td>{{ car.description }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              routerLink="/cars/details/{{ car.id }}"
+            >
+              Araba detaylarını gör
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

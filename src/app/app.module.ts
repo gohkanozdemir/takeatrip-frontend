@@ -20,7 +20,11 @@ import {ToastrModule } from "ngx-toastr";
 import { CardetailswithimagesComponent } from './components/cardetailswithimages/cardetailswithimages.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { CarAddComponent } from './components/car-add/car-add.component';
-import { MarkAsteriskDirective } from './directives/mark-asterisk.directive'
+import { MarkAsteriskDirective } from './directives/mark-asterisk.directive';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { FileUploadDirective } from './directives/file-upload.directive';
+import { CarimageAddComponent } from './components/carimage-add/carimage-add.component';
+import { ProgressComponent } from './components/progress/progress.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +41,11 @@ import { MarkAsteriskDirective } from './directives/mark-asterisk.directive'
     CardetailswithimagesComponent,
     VatAddedPipe,
     CarAddComponent,
-    MarkAsteriskDirective
+    MarkAsteriskDirective,
+    HomepageComponent,
+    FileUploadDirective,
+    CarimageAddComponent,
+    ProgressComponent
   ],
   imports: [
     HttpClientModule,

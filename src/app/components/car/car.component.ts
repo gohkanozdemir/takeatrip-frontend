@@ -52,7 +52,7 @@ export class CarComponent implements OnInit {
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
-      console.log("getCars" +JSON.stringify(response.data) )
+      //console.log("getCars" +JSON.stringify(response.data) )
       this.getCarsDetails();
     });
   }
@@ -73,15 +73,17 @@ export class CarComponent implements OnInit {
   getCarsDetails() {
     this.carService.getCarsDetails().subscribe((response) => {
       this.carsWithDetails = response.data;
-      console.log("getCarsDetails" +JSON.stringify(response.data) )
-      this.mergeForDetails();
+      this.dataLoaded = true;
+      //console.log("getCarsDetails" +JSON.stringify(response.data) )
+      //this.mergeForDetails();
     });
   }
 
   getCarsDetailsByCategoryId(categoryId: number) {
     this.carService.getCarsDetailsByCategoryId(categoryId).subscribe((response) => {
       this.carsWithDetails = response.data;
-      this.mergeForDetails();
+      this.dataLoaded = true;
+      //this.mergeForDetails();
     });
   }
 

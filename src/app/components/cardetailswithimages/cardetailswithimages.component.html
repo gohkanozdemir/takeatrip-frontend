@@ -1,59 +1,54 @@
 <div class="card">
-  <div class="card-body">
-    <div
-      id="carouselCarImages"
-      class="carousel slide"
-      data-bs-ride="carousel"
-    >
-      <div class="carousel-inner">
-        <div *ngFor="let image of images; let i = index" [ngClass]="getSliderClassName(i)">
-            <img src="{{ imageUrl }}/{{ image.imagePath }}" class="rounded mx-auto d-block" alt="..." />
+  <div class="card-body">    
+    <div class="card" style="width: 35rem" >
+      <div id="carouselCarImages" class="carousel slide" data-bs-ride="carousel"> 
+        <div class="carousel-inner">
+          <div
+            *ngFor="let image of images; let i = index"
+            [ngClass]="getSliderClassName(i)"
+          >
+            <img
+              src="{{ imageUrl }}/{{ image.imagePath }}"
+              class="rounded mx-auto d-block"
+              alt="..."
+            />
           </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselCarImages"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Önceki</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselCarImages"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Sonraki</span>
+        </button>
       </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselCarImages"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Önceki</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselCarImages"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Sonraki</span>
-      </button>
-    </div>
-    <table class="table m-1">
-      <thead>
-        <tr>
-          <th>Car Name</th>
-          <th>Brand Name</th>
-          <th>Color</th>
-          <th>Category</th>
-          <th>ModelYear</th>
-          <th>DailyPrice</th>
-          <th>VAT DailyPrice</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngIf="carDetail">
-          <td>{{ carDetail.carName }}</td>
-          <td>{{ carDetail.brandName | uppercase }}</td>
-          <td>{{ carDetail.colorName }}</td>
-          <td>{{ carDetail.categoryName }}</td>
-          <td>{{ carDetail.modelYear }}</td>
-          <td>{{ carDetail.dailyPrice | currency }}</td>
-          <td>{{ carDetail.dailyPrice | vatAdded: 18 | currency }}</td>
-          <td>{{ carDetail.description }}</td>
-          <td>
-            <button
+      <div class="card-body" class="border border-5 border-primary">
+        <h5 class="card-title">Vehicle Features</h5>
+        <h6 class="card-subtitle mb-2 text-muted"> </h6>
+        <p class="card-text">Car Model : {{ carDetail.carName }}</p>
+        <p class="card-text">Brand : {{ carDetail.brandName | uppercase }}</p>
+        <p class="card-text">Color :{{ carDetail.colorName }}</p>
+        <p class="card-text">Category : {{ carDetail.categoryName }}</p>
+        <p class="card-text">ModelYear : {{ carDetail.modelYear }}</p>
+        <p class="card-text">
+          Daily Price :{{ carDetail.dailyPrice | currency }}
+        </p>
+        <p class="card-text">
+          VAT DailyPrice :{{ carDetail.dailyPrice | vatAdded: 18 | currency }}
+        </p>
+        <p class="card-text">Description : {{ carDetail.description }}</p>
+        <button
               routerLink="/cars"
               (click)="getBack()"
               type="button"
@@ -62,9 +57,7 @@
             >
               Ana Sayfaya Geri Dön
             </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      </div>
+    </div>
   </div>
 </div>

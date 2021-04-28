@@ -3,6 +3,7 @@
     <div class="card">
       <div class="card-header"><h5 class="title">Araba ekle</h5></div>
       <div class="card-body">
+        <app-carimage-add (saveImage)= "getImageList($event)"></app-carimage-add>
         <form [formGroup]="carAddForm">
           <div class="mb-3">
             <label for="category"> Category <span class="required-asterisk">*</span> </label>
