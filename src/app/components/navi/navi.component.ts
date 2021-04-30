@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navi',
@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navi.component.css']
 })
 export class NaviComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {

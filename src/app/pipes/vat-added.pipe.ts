@@ -1,3 +1,4 @@
+import { decimalDigest } from '@angular/compiler/src/i18n/digest';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -5,8 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class VatAddedPipe implements PipeTransform {
 
-  transform(value: number, rate:number): number {
-    return value + (value*rate/100);
+  transform(value: number, rate:number): string {
+    return (value +(value*rate/100)).toFixed(2)
   }
 
 }

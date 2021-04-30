@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BrandAddComponent } from './components/brand-add/brand-add.component';
-import { CarAddComponent } from './components/car-add/car-add.component';
-import { CarComponent } from './components/car/car.component';
-import { CardetailswithimagesComponent } from './components/cardetailswithimages/cardetailswithimages.component';
-import { CarimageAddComponent } from './components/carimage-add/carimage-add.component';
-import { CategoryAddComponent } from './components/category-add/category-add.component';
-import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandAddComponent } from './components/brands/brand-add/brand-add.component';
+import { CarAddComponent } from './components/cars/car-add/car-add.component';
+import { CarComponent } from './components/cars/car/car.component';
+import { CardetailswithimagesComponent } from './components/cars/cardetailswithimages/cardetailswithimages.component';
+import { CarimageAddComponent } from './components/carimages/carimage-add/carimage-add.component';
+import { CategoryAddComponent } from './components/categories/category-add/category-add.component';
+import { ColorAddComponent } from './components/colors/color-add/color-add.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [

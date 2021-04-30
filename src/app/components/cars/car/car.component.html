@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-md-3" id="filters">
+    <div class="sticky-top sidebar m-2">
+      <div class="accordion" id="filterAccordion">
+        <div>
+          <app-category></app-category>
+        </div>
+        <div>
+          <app-brand></app-brand>
+        </div>
+        <div>
+          <app-color></app-color>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 ms-2">
+    <div
+      *ngIf="dataLoaded == false"
+      class="spinner-border text-primary"
+      role="status"
+    >
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="mb-3">
+      <label for="filterCar" class="form-label">Search Car Model</label>
+      <input
+        type="text"
+        [(ngModel)]="filterCar"
+        class="form-control"
+        id="filterCar"
+        placeholder="Search"
+      />
+    </div>
+    <div>
+      <mat-toolbar color="primary">
+        <span>Car List</span>
+        <div fxHide.lt-md>
+          <mat-slider
+            aria-label="unit(s)"
+            max="4"
+            min="1"
+            step="1"
+            [(ngModel)]="gridColumns"
+            thumbLabel="true"
+          >
+          </mat-slider>
+        </div>
+      </mat-toolbar>
+      <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+          <div
+            [fxFlex]="100 / gridColumns + '%'"
+            fxFlex.xs="100%"
+            fxFlex.sm="33%"
+            *ngFor="let car of carsWithDetails | filterPipe: filterCar"
+          >
+            <mat-card  
+              appMaterialElevation
+              class="mat-elevation-z4 car-card"
+              (click)="setCurrentCar(car)"
+              [ngClass]="{ 'selected-card': selectedCar === car }"
+            >
+              <mat-card-header>
+                <mat-card-title>{{ car.carName }}</mat-card-title>
+              </mat-card-header>  
+                <img
+                mat-card-image
+                [src]="getCarImages(car)"
+                alt="{{ car.carName }}"
+              /> 
+              <mat-card-content>
+                <p>Model : {{ car.carName }}</p>
+                <p>Brand : {{ car.brandName | uppercase }}</p>
+                <p>Color : {{ car.colorName }}</p>
+                <p>Category : {{ car.categoryName }}</p>
+                <p>Model Year : {{ car.modelYear }}</p>
+                <p>Daily Price : {{ car.dailyPrice }} ₺</p>
+                <p>VAT Daily Price : {{ car.dailyPrice | vatAdded: 18 }} ₺</p>
+                <p>Description : {{ car.description }}</p>
+                <mat-card-actions>
+                  <button
+                    mat-stroked-button
+                    color="primary"
+                    routerLink="/cars/details/{{ car.id }}"
+                  >
+                    Details
+                  </button>
+
+                  <button mat-stroked-button color="accent">Rent</button>
+                </mat-card-actions>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

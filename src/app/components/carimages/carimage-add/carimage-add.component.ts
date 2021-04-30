@@ -1,23 +1,23 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-carimage-add',
   templateUrl: './carimage-add.component.html',
-  styleUrls: ['./carimage-add.component.css']
+  styleUrls: ['./carimage-add.component.css'],
 })
 export class CarimageAddComponent implements OnInit {
   files: any[] = [];
-  constructor() { }
+  constructor(private toastrService: ToastrService) {}
   // @Input() listOfImageFiles : any[] = []; Parent tan deger almak icin
   @Output() saveImage = new EventEmitter<any>(); // Parante deger yollamak icin
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * on file drop handler
    */
-   onFileDropped(event: any) {
+  onFileDropped(event: any) {
     this.prepareFilesList(event);
   }
 
@@ -25,8 +25,8 @@ export class CarimageAddComponent implements OnInit {
    * handle file from browsing
    */
   fileBrowseHandler(event: any) {
-     //const element  = event.target as HTMLInputElement;
-     //  const filesUi = element.files as FileList;
+    //const element  = event.target as HTMLInputElement;
+    //  const filesUi = element.files as FileList;
     //   console.log(filesUi);
     //   let fileList: FileList | null = element .files;
     // if (fileList) {
@@ -68,16 +68,21 @@ export class CarimageAddComponent implements OnInit {
    * @param files (Files List)
    */
   prepareFilesList(files: Array<any>) {
-    for (const item of files) {
-      item.progress = 0;
-      this.files.push(item);
-      this.saveImageService();
-     // this.listOfImageFiles =this.files;
+    if (files.length > 5) {
+      this.toastrService.error('Max upload files limit 5', 'Warnings!');
+    } else {
+      for (const item of files) {
+        item.progress = 0;
+        this.files.push(item);
+        this.saveImageService();
+        // this.listOfImageFiles =this.files;
+      }
+      this.uploadFilesSimulator(0);
     }
-    this.uploadFilesSimulator(0);
   }
+
   saveImageService() {
-    this.saveImage.emit(this.files)
+    this.saveImage.emit(this.files);
   }
 
   /**
@@ -95,5 +100,4 @@ export class CarimageAddComponent implements OnInit {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
-
 }

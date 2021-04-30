@@ -16,6 +16,10 @@ export class CarImageService {
   uploadForm: FormGroup;
   constructor(private httpClient: HttpClient) {}
 
+  getAllImages(): Observable<ListResponseModel<CarImage>>{
+    let newPath = this.apiUrl + 'carImages/getall'
+    return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
+  }
   getImagesByCarId(carId:number): Observable<ListResponseModel<CarImage>>{
     let newPath = this.apiUrl + 'carImages/getimages?id=' + carId;
     return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
