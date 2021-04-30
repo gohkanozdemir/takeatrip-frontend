@@ -1,0 +1,13 @@
+button {
+    margin: 0.2em;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .car-card {
+    max-width: 800px;
+  }
+  mat-card {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }

@@ -1,63 +1,79 @@
-<div class="card">
-  <div class="card-body">    
-    <div class="card" style="width: 35rem" >
-      <div id="carouselCarImages" class="carousel slide" data-bs-ride="carousel"> 
-        <div class="carousel-inner">
-          <div
-            *ngFor="let image of images; let i = index"
-            [ngClass]="getSliderClassName(i)"
-          >
-            <img
-              src="{{ imageUrl }}/{{ image.imagePath }}"
-              class="rounded mx-auto d-block"
-              alt="..."
-            />
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselCarImages"
-          data-bs-slide="prev"
+<mat-toolbar>
+  <span>Car Features</span>
+  <div fxHide.lt-md></div>
+</mat-toolbar>
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+    <div fxFlex="100%" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)">
+      <mat-card appMaterialElevation class="mat-elevation-z4 car-card">
+        <mat-card-header>
+          <mat-card-title>  {{carDetail.carName}} </mat-card-title>
+        </mat-card-header>
+        <div
+          id="carouselCarImages"
+          class="carousel slide"
+          data-bs-ride="carousel"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Önceki</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselCarImages"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Sonraki</span>
-        </button>
-      </div>
-      <div class="card-body" class="border border-5 border-primary">
-        <h5 class="card-title">Vehicle Features</h5>
-        <h6 class="card-subtitle mb-2 text-muted"> </h6>
-        <p class="card-text">Car Model : {{ carDetail.carName }}</p>
-        <p class="card-text">Brand : {{ carDetail.brandName | uppercase }}</p>
-        <p class="card-text">Color :{{ carDetail.colorName }}</p>
-        <p class="card-text">Category : {{ carDetail.categoryName }}</p>
-        <p class="card-text">ModelYear : {{ carDetail.modelYear }}</p>
-        <p class="card-text">
-          Daily Price :{{ carDetail.dailyPrice | currency }}
-        </p>
-        <p class="card-text">
-          VAT DailyPrice :{{ carDetail.dailyPrice | vatAdded: 18 | currency }}
-        </p>
-        <p class="card-text">Description : {{ carDetail.description }}</p>
-        <button
-              routerLink="/cars"
-              (click)="getBack()"
-              type="button"
-              aria-current="true"
-              class="btn btn-success float-end"
+          <div class="carousel-inner">
+            <div
+              *ngFor="let image of images; let i = index"
+              [ngClass]="getSliderClassName(i)"
             >
-              Ana Sayfaya Geri Dön
-            </button>
-      </div>
+              <img
+                src="{{ imageUrl }}/{{ image.imagePath }}"
+                class="rounded mx-auto d-block"
+                alt="..."
+              />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselCarImages"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Önceki</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselCarImages"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Sonraki</span>
+          </button>
+        </div>
+        <mat-card-content>
+          <h6 class="card-subtitle mb-2 text-muted"></h6>
+          <p class="card-text">Car Model : {{ carDetail.carName }}</p>
+          <p class="card-text">Brand : {{ carDetail.brandName | uppercase }}</p>
+          <p class="card-text">Color :{{ carDetail.colorName }}</p>
+          <p class="card-text">Category : {{ carDetail.categoryName }}</p>
+          <p class="card-text">ModelYear : {{ carDetail.modelYear }}</p>
+          <p class="card-text">
+            Daily Price :{{ carDetail.dailyPrice | currency }}
+          </p>
+          <p class="card-text">
+            VAT DailyPrice :{{ carDetail.dailyPrice | vatAdded: 18 | currency }}
+          </p>
+          <p class="card-text">Description : {{ carDetail.description }}</p>
+          <mat-card-actions>
+            <button
+            mat-stroked-button
+            color="primary"
+            routerLink="/cars"
+            (click)="getBack()"
+            aria-current="true"
+          >
+            Ana Sayfaya Geri Dön
+          </button>
+          </mat-card-actions>
+          
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
-</div>
+
+  
